@@ -139,9 +139,13 @@
 
     <form [formGroup]="registroform" (submit)="send()">
 
+        <section *ngIf="registroform.valid">
+            <h3 class="text-dark text-center">{{mensaje}}</h3>
+        </section>
+
         <section class="form-group m-3">
             <label class="h4" for="nombres">Nombre</label>
-            <input class="form-control" type="text" formControlName="nombres">
+            <input class="form-control" type="text" formControlName="nombres" [ngStyle]="{'border-color': nombres?.invalid && (nombres?.dirty || nombres?.touched)?'red':'gray'}">
             <section *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)">
                 <section *ngIf="nombres?.errors?.['required']" class="alert alert-success">
                     el nombre es obligatorio
@@ -151,7 +155,7 @@
 
         <section class="form-group m-3">
             <label class="h4" for="apellidos">Apellidos</label>
-            <input class="form-control" type="text" formControlName="apellidos">
+            <input class="form-control" type="text" formControlName="apellidos" [ngStyle]="{'border-color': apellidos?.invalid && (apellidos?.dirty || apellidos?.touched)?'red':'gray'}">
             <section *ngIf="apellidos?.invalid && (apellidos?.dirty || apellidos?.touched)">
                 <section *ngIf="apellidos?.errors?.['required']" class="alert alert-success">
                     el apellido es obligatorio
@@ -161,7 +165,7 @@
 
         <section class="form-group m-3">
             <label class="h4" for="dni">DNI</label>
-            <input formControlName="dni" maxlength="8" class="form-control" type="text" >
+            <input formControlName="dni" maxlength="8" class="form-control" type="text" [ngStyle]="{'border-color': dni?.invalid && (dni?.dirty || dni?.touched)?'red':'gray'}" >
             <section *ngIf="dni?.invalid && (dni?.dirty || dni?.touched)">
                 <section *ngIf="dni?.errors?.['required']" class="alert alert-success">
                     el dni es obligatorio
@@ -175,7 +179,7 @@
         
         <section class="form-group m-3">
             <label class="h4" for="ciudad">Ciudad:</label>
-            <input class="form-control" type="text" formControlName="ciudad">
+            <input class="form-control" type="text" formControlName="ciudad" [ngStyle]="{'border-color': ciudad?.invalid && (ciudad?.dirty || ciudad?.touched)?'red':'gray'}">
             <section *ngIf="ciudad?.invalid && (ciudad?.dirty || ciudad?.touched)">
                 <section *ngIf="ciudad?.errors?.['required']" class="alert alert-success">
                     la ciudad es obligatoria
@@ -186,8 +190,8 @@
         <section class="form-group m-3">
             <button [disabled]="registroform.invalid" type="submit" class="btn btn-primary m-1">submit</button>
         </section>
-        <section *ngIf="registroform.valid">
+        <!-- <section *ngIf="registroform.valid">
             <h3 class="text-primary">{{mensaje}}</h3>
-        </section>
+        </section> -->
     </form>
 </section>

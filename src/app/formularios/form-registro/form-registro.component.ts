@@ -107,7 +107,7 @@ export class FormRegistroComponent implements OnInit {
   mensaje="";
   send(){
     if(this.registroform.valid){
-      this.mensaje="Registro Exitoso"
+      this.mensaje="Gracias por comunicarnos con nosotros"
     }
     console.log(this.registroform.value);
   }
